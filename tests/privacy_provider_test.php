@@ -34,7 +34,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  Copyright (c) 2019 Blackboard Inc. (http://www.blackboard.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mod_lti_privacy_provider_testcase extends \core_privacy\tests\provider_testcase {
+class mod_livepoll_privacy_provider_testcase extends \core_privacy\tests\provider_testcase {
 
     /**
      * Test for provider::get_metadata().

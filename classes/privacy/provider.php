@@ -27,6 +27,12 @@ namespace mod_livepoll\privacy;
 
 use core_privacy\local\metadata\collection;
 use core_privacy\local\metadata\provider as metadataprovider;
+use core_privacy\local\request\core_userlist_provider as userlistprovider;
+use core_privacy\local\request\plugin\provider as pluginprovider;
+use core_privacy\local\request\approved_contextlist;
+use core_privacy\local\request\approved_userlist;
+use core_privacy\local\request\contextlist;
+use core_privacy\local\request\userlist;
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -36,7 +42,9 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements metadataprovider {
+class provider implements metadataprovider,
+    pluginprovider,
+    userlistprovider {
 
     /**
      * Gets the metadata collection for this plugin.
@@ -50,5 +58,24 @@ class provider implements metadataprovider {
         ], 'privacy:metadata:livepoll_firebase');
 
         return $collection;
+    }
+
+    public static function get_contexts_for_userid(int $userid) : contextlist {
+        return new contextlist();
+    }
+
+    public static function export_user_data(approved_contextlist $contextlist) {
+    }
+
+    public static function delete_data_for_all_users_in_context(\context $context) {
+    }
+
+    public static function delete_data_for_user(approved_contextlist $contextlist) {
+    }
+
+    public static function get_users_in_context(userlist $userlist) {
+    }
+
+    public static function delete_data_for_users(approved_userlist $userlist) {
     }
 }
