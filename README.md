@@ -44,7 +44,7 @@ This will not store any of the responses into Moodle.
 
 ## License
 
-Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+Copyright (c) 2018 Open LMS (https://www.openlms.net)
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

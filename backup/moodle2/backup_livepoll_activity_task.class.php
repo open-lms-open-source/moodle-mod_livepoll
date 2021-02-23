@@ -19,7 +19,7 @@
  *
  * @package     mod_livepoll
  * @category    backup
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -31,7 +31,7 @@ require_once($CFG->dirroot.'/mod/livepoll/backup/moodle2/backup_livepoll_setting
 /**
  * The class provides all the settings and steps to perform one complete backup of mod_livepoll.
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_livepoll_activity_task extends backup_activity_task {

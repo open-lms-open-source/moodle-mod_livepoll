@@ -18,7 +18,7 @@
  * All the steps to restore mod_livepoll are defined here.
  *
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
  * Defines the structure step to restore one mod_livepoll activity.
  *
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_livepoll_activity_structure_step extends restore_activity_structure_step {

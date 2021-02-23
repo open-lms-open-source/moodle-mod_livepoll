@@ -17,7 +17,7 @@
  * Live poll Polar Area chart result for poll rendering.
  *
  * @package mod_livepoll
- * @copyright Copyright (c) 2019 Blackboard Inc.
+ * @copyright Copyright (c) 2019 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 define(["jquery", "core/log", "mod_livepoll/barchart-result-lazy"],

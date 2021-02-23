@@ -18,7 +18,7 @@
  * The main mod_livepoll configuration form.
  *
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +30,7 @@ require_once($CFG->dirroot.'/course/moodleform_mod.php');
  * Module instance settings form.
  *
  * @package    mod_livepoll
- * @copyright  Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class mod_livepoll_mod_form extends moodleform_mod {

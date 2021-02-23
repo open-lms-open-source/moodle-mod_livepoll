@@ -19,7 +19,7 @@
  *
  * @package     mod_livepoll
  * @category    privacy
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -39,7 +39,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Privacy API implementation for the Live poll plugin.
  *
- * @copyright  Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements metadataprovider,

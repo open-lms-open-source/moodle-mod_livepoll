@@ -17,7 +17,7 @@
  * Live poll rendering strategy interface.
  *
  * @package    mod_livepoll
- * @copyright  Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace mod_livepoll\result;
@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * Live poll rendering strategy interface.
  *
- * @copyright  Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class polarareachart_text_strategy implements rendering_strategy {

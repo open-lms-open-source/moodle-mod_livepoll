@@ -18,7 +18,7 @@
  * The task that provides a complete restore of mod_livepoll is defined here.
  *
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,7 +29,7 @@ require_once($CFG->dirroot.'//mod/livepoll/backup/moodle2/restore_livepoll_steps
 /**
  * Restore task for mod_livepoll.
  * @package     mod_livepoll
- * @copyright   Copyright (c) 2018 Blackboard Inc. (http://www.blackboard.com)
+ * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class restore_livepoll_activity_task extends restore_activity_task {

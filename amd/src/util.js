@@ -17,7 +17,7 @@
  * livepoll Util component.
  *
  * @package mod_livepoll
- * @copyright Copyright (c) 2018 Blackboard Inc.
+ * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 define(["jquery"],
