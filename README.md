@@ -1,8 +1,5 @@
 # Live poll
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d6a9cd4828dd4779ae925ca91f8f5618)](https://app.codacy.com/app/dvdcastro/moodle-mod_livepoll?utm_source=github.com&utm_medium=referral&utm_content=dvdcastro/moodle-mod_livepoll&utm_campaign=Badge_Grade_Dashboard)
-[![Build Status](https://travis-ci.org/dvdcastro/moodle-mod_livepoll.svg?branch=master)](https://travis-ci.org/dvdcastro/moodle-mod_livepoll)
-
 This module allows having a live updating poll.
 
 It uses Firebase to push the updates and stores the data anonymously, so no GDPR
@@ -29,7 +26,7 @@ concerns there.
 8. From the project overview page in the [Firebase console](https://console.firebase.google.com),
 click __Add Firebase to your web app__. If your project already has an app, select __Add App__
 from the project overview page.
-9. You can copy and paste the __Project ID__ and __API Key__ to add
+9. You can copy and paste the __API Key__, __Auth Domain__, __Database URL__ and the __Project ID__ to add
 them to the Moodle plugin settings page. _Site administration > Plugins > Activity modules > Live poll_
 
 ## Usage
