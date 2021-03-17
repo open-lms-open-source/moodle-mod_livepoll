@@ -32,6 +32,20 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configtext($name, $title, $description, $default);
     $settings->add($setting);
 
+    $name = 'livepoll/firebaseauthdomain';
+    $title = get_string('firebaseauthdomain', 'mod_livepoll');
+    $description = get_string('firebaseauthdomain_desc', 'mod_livepoll');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
+    $name = 'livepoll/firebasedatabaseurl';
+    $title = get_string('firebasedatabaseurl', 'mod_livepoll');
+    $description = get_string('firebasedatabaseurl_desc', 'mod_livepoll');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
     $name = 'livepoll/firebaseprojectid';
     $title = get_string('firebaseprojectid', 'mod_livepoll');
     $description = get_string('firebaseprojectid_desc', 'mod_livepoll');

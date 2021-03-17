@@ -245,9 +245,9 @@ define(["jquery", "core/log", "core/templates"],
             // Set the configuration for your app.
             var config = {
                 apiKey: self.apiKey,
-                authDomain: self.projectID + ".firebaseapp.com",
-                databaseURL: "https://" + self.projectID + ".firebaseio.com",
-                storageBucket: self.projectID + ".appspot.com"
+                authDomain: self.authDomain,
+                databaseURL: self.databaseURL,
+                projectId: self.projectID,
             };
 
             self.firebase.initializeApp(config);
@@ -281,6 +281,8 @@ define(["jquery", "core/log", "core/templates"],
          * Module initialization function.
          *
          * @param apiKey
+         * @param authDomain
+         * @param databaseURL
          * @param projectID
          * @param pollKey
          * @param userKey
@@ -288,8 +290,10 @@ define(["jquery", "core/log", "core/templates"],
          * @param correctOption
          * @param resultsToRender
          */
-        var init = function(apiKey, projectID, pollKey, userKey, options, correctOption, resultsToRender) {
+        var init = function(apiKey, authDomain, databaseURL, projectID, pollKey, userKey, options, correctOption, resultsToRender) {
             self.apiKey = apiKey;
+            self.authDomain = authDomain;
+            self.databaseURL = databaseURL;
             self.projectID = projectID;
             self.options = options;
             self.correctOption = correctOption;

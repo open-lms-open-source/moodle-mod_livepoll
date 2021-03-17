@@ -59,5 +59,43 @@ function xmldb_livepoll_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2018071303, 'livepoll');
     }
 
+    if ($oldversion < 2018071304) {
+        if (!empty($projectid = get_config('livepoll', 'firebaseprojectid'))) {
+            // Auto-calculate settings based on project id.
+            set_config(
+                'firebaseauthdomain',
+                "$projectid.firebaseapp.com",
+                'livepoll'
+            );
+
+            $databaseurl = "https://$projectid.firebaseio.com";
+            if (in_array('curl', get_loaded_extensions())) {
+                // Going a bit further with the realtime DB if cURL extension is present.
+                $handle = curl_init($databaseurl);
+                curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+
+                /* Get the HTML or whatever is linked in $url. */
+                $response = curl_exec($handle);
+
+                /* Check for 404 (file not found). */
+                $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+                if ($httpCode == 404) {
+                    // New default realtime database url.
+                    // See this: https://firebase.google.com/docs/projects/learn-more#project-id.
+                    $databaseurl = "https://$projectid-default-rtdb.firebaseio.com";
+                }
+                curl_close($handle);
+            }
+
+            set_config(
+                'firebasedatabaseurl',
+                $databaseurl,
+                'livepoll'
+            );
+        }
+        // Live poll savepoint reached.
+        upgrade_mod_savepoint(true, 2018071304, 'livepoll');
+    }
+
     return true;
 }

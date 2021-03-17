@@ -132,9 +132,11 @@ if ($cancontrol) {
         ]);
 }
 
-echo $OUTPUT->render_from_template('mod_livepoll/firebase_52', (object) []);
+echo $OUTPUT->render_from_template('mod_livepoll/firebase_libraries', (object) []);
 $PAGE->requires->js_call_amd('mod_livepoll/livepoll-lazy', 'init', [
     'apiKey' => get_config('livepoll', 'firebaseapikey'),
+    'authDomain' => get_config('livepoll', 'firebaseauthdomain'),
+    'databaseURL' => get_config('livepoll', 'firebasedatabaseurl'),
     'projectID' => get_config('livepoll', 'firebaseprojectid'),
     'pollKey' => $pollkey,
     'userKey' => $userkey,
