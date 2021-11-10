@@ -62,6 +62,12 @@ $PAGE->set_context($modulecontext);
 
 echo $OUTPUT->header();
 
+// Render the activity information.
+$cminfo = cm_info::create($cm);
+$completiondetails = \core_completion\cm_completion_details::get_instance($cminfo, $USER->id);
+$activitydates = \core\activity_dates::get_dates_for_module($cminfo, $USER->id);
+echo $OUTPUT->activity_information($cminfo, $completiondetails, $activitydates);
+
 $userkey = sha1($course->id.'_'.$moduleinstance->id.'_'.$USER->id);
 $pollkey = sha1($course->id.'_'.$moduleinstance->id);
 
