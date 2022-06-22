@@ -57,6 +57,10 @@ function livepoll_add_instance($livepoll) {
     $livepoll->timecreated = time();
     $id = $DB->insert_record('livepoll', $livepoll);
 
+    // Add the events relating to this livepoll activity.
+    $completiontimeexpected = !empty($livepoll->completionexpected) ? $livepoll->completionexpected : null;
+    \core_completion\api::update_completion_date_event($livepoll->coursemodule, 'livepoll', $id, $completiontimeexpected);
+
     return $id;
 }
 
@@ -76,6 +80,10 @@ function livepoll_update_instance($livepoll) {
     $livepoll->timemodified = time();
     $livepoll->id = $livepoll->instance;
 
+    // Update the events relating to this livepoll acticity.
+    $completiontimeexpected = !empty($livepoll->completionexpected) ? $livepoll->completionexpected : null;
+    \core_completion\api::update_completion_date_event($livepoll->coursemodule, 'livepoll', $livepoll->id, $completiontimeexpected);
+
     return $DB->update_record('livepoll', $livepoll);
 }
 
@@ -92,6 +100,10 @@ function livepoll_delete_instance($id) {
     if (!$exists) {
         return false;
     }
+
+    // Delete the events relating to this livepoll activity.
+    $cm = get_coursemodule_from_instance('livepoll', $id);
+    \core_completion\api::update_completion_date_event($cm->id, 'livepoll', $id, null);
 
     $DB->delete_records('livepoll', array('id' => $id));
 
