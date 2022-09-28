@@ -62,12 +62,6 @@ $PAGE->set_context($modulecontext);
 
 echo $OUTPUT->header();
 
-// Render the activity information.
-$cminfo = cm_info::create($cm);
-$completiondetails = \core_completion\cm_completion_details::get_instance($cminfo, $USER->id);
-$activitydates = \core\activity_dates::get_dates_for_module($cminfo, $USER->id);
-echo $OUTPUT->activity_information($cminfo, $completiondetails, $activitydates);
-
 $userkey = sha1($course->id.'_'.$moduleinstance->id.'_'.$USER->id);
 $pollkey = sha1($course->id.'_'.$moduleinstance->id);
 
@@ -91,12 +85,6 @@ foreach ($optkeys as $optkey) {
 
 $canvote = has_capability('mod/livepoll:vote', $modulecontext);
 $cancontrol = has_capability('mod/livepoll:addinstance', $modulecontext);
-
-echo $OUTPUT->render_from_template('mod_livepoll/header',
-    (object) [
-        'name' => $moduleinstance->name,
-        'intro' => $moduleinstance->intro,
-    ]);
 
 // Performing a rendering strategy.
 $strategyid = $moduleinstance->resultrendering;
