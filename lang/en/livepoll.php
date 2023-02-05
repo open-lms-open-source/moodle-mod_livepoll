@@ -74,3 +74,6 @@ $string['control:closevoting'] = 'Close voting';
 $string['control:highlightanswer'] = 'Highlight answer';
 $string['control:votinghasclosed'] = 'Voting has been closed by moderator.';
 $string['control:votinghasclosed:close'] = 'Close message';
+
+$string['mobile:pushtoVote'] = 'Push to vote';
+$string['mobile:votes'] = 'Votes';
