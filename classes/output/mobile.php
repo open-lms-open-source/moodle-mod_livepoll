@@ -21,9 +21,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 namespace mod_livepoll\output;
-defined('MOODLE_INTERNAL') || die();
-
-use context_module;
 
 /**
  * Mobile output class for Live poll.
@@ -33,65 +30,82 @@ use context_module;
  */
 class mobile {
 
-    /**
-     * Returns the choice group course view for the mobile app.
-     * @param  array $args Arguments from tool_mobile_get_content WS
-     *
-     * @return array HTML, javascript and otherdata
-     */
+    public static function mobile_init(array $args): array|null
+    {
+        global $CFG;
+
+        $js = file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/lib/firebase-app.js');
+        $js .= file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/lib/firebase-auth.js');
+        $js .= file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/lib/firebase-database.js');
+        $js .= file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/ChartCtrl.min.js');
+        $js .= file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/OptionCtrl.min.js');
+        $js .= file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/init.min.js');
+
+    return [
+            'javascript' => $js,
+        ];
+    }
+
     public static function mobile_course_view($args) {
-        global $OUTPUT, $DB;
-        $args = (object)$args;
-        $cm = get_coursemodule_from_id('livepoll', $args->cmid);
-        // Capabilities check.
-        require_login($args->courseid, false, $cm, true, true);
-        $context = context_module::instance($cm->id);
-        require_capability('mod/livepoll:view', $context);
-        $canvote = has_capability('mod/livepoll:vote', $context);
-        $livepoll = $DB->get_record('livepoll', array('id' => $cm->instance), '*', MUST_EXIST);
+        global $CFG, $DB, $OUTPUT, $USER;
+
+
+        $context = \context_module::instance($args['cmid']);
+        $course = $context->get_course_context();
+        $cm = get_coursemodule_from_id('livepoll', $args['cmid'], 0, false, MUST_EXIST);
+        $moduleinstance = $DB->get_record('livepoll', ['id' => $cm->instance], '*', MUST_EXIST);
+
+        $isLecturer = has_capability('mod/livepoll:addinstance', $context);
+
+        $userkey = sha1($course->instanceid.'_'.$moduleinstance->id.'_'.$USER->id);
+        $pollkey = sha1($course->instanceid.'_'.$moduleinstance->id);
 
         $optkeys = ['a', 'b', 'c', 'd'];
-        $templateopts = [];
+        $pollopts = [];
         foreach ($optkeys as $optkey) {
             $optionid = 'option' . $optkey;
             $optiontxt = get_string('optionx', 'mod_livepoll', strtoupper($optkey));
-            if (empty($livepoll->{$optionid})) {
+            if (empty($moduleinstance->{$optionid})) {
                 continue;
             }
 
-            $templateopts[] = (object) [
+            $pollopts[$optionid] = (object) [
                 'title' => $optiontxt,
                 'optionid' => $optionid,
-                'value' => $livepoll->{$optionid},
+                'value' => $moduleinstance->{$optionid},
             ];
         }
 
-        // Format name and intro.
-        $livepoll->name = format_string($livepoll->name);
-        list($livepoll->intro, $livepoll->introformat) = external_format_text(
-            $livepoll->intro,
-            $livepoll->introformat,
-            $context->id,
-            'mod_livepoll',
-            'intro'
-        );
-        $data = [
-            'cmurl' => $cm->url,
-            'cmid' => $cm->id,
-            'courseid' => $args->courseid,
-            'livepoll' => $livepoll,
-            'canvote' => $canvote,
-            'options' => $templateopts,
-        ];
+        // Performing a rendering strategy.
+        $strategyid = $moduleinstance->resultrendering;
+        $strategyclass = '\\mod_livepoll\\result\\' . $strategyid . '_strategy';
+
+        /** @var \mod_livepoll\result\rendering_strategy $strategy */
+        $strategy = new $strategyclass();
+        $elements = $strategy->get_results_to_render();
+
+        $pollConfig = new \stdClass();
+        $pollConfig->apiKey = get_config('livepoll', 'firebaseapikey');
+        $pollConfig->authDomain = get_config('livepoll', 'firebaseauthdomain');
+        $pollConfig->databaseURL = get_config('livepoll', 'firebasedatabaseurl');
+        $pollConfig->projectID = get_config('livepoll', 'firebaseprojectid');
+        $pollConfig->pollKey = $pollkey;
+        $pollConfig->userKey = $userkey;
+        $pollConfig->options = $pollopts;
+        $pollConfig->correctOption = $moduleinstance->correctoption;
+        $pollConfig->resultsToRender = $elements;
+        $pollConfig->intro =  $moduleinstance->intro;
+
+
         return [
             'templates' => [
                 [
                     'id' => 'main',
-                    'html' => $OUTPUT->render_from_template('mod_livepoll/mobile_view_page', $data),
+                    'html' => $OUTPUT->render_from_template('mod_livepoll/mobile/latest/mobile_view_page', ['isLecturer' => $isLecturer]),
                 ],
             ],
-            'javascript' => '',
-            'otherdata' => '',
+            'javascript' => file_get_contents($CFG->dirroot . '/mod/livepoll/mobile/js/page.min.js'),
+            'otherdata' => json_encode($pollConfig)
         ];
     }
 }

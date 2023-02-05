@@ -39,6 +39,10 @@ This will not store any of the responses into Moodle.
 
 ![livepolldemo](https://user-images.githubusercontent.com/1523388/53187047-3dee2e00-35d0-11e9-98bd-5005f4b7bd1c.gif)
 
+Mobile support
+
+![livepoll_1-2](https://user-images.githubusercontent.com/1297622/216808592-2fb969bc-1080-42da-8132-b2394ed34a3c.gif)
+
 ## License
 
 Copyright (c) 2018 Open LMS (https://www.openlms.net)

@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 /**
- * Certificate module capability definition
+ * Live poll module capability definition
  *
  * @package    mod_livepoll
  * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
@@ -32,15 +32,23 @@ $addons = [
                 ],
                 'delegate' => 'CoreCourseModuleDelegate', // Delegate (where to display the link to the add-on).
                 'method' => 'mobile_course_view', // Main function in \mod_livepoll\output\mobile.
+                'init' => 'mobile_init',
+                'styles' => [
+                    'url' => $CFG->wwwroot . '/mod/livepoll/mobile/css/styles.css',
+                    'version' => '2'
+                ],
                 'offlinefunctions' => [
                     'mobile_course_view' => [],
+                    'mobile_issues_view' => [],
                 ], // Function needs caching for offline.
             ],
         ],
         'lang' => [
-            ['modulename', 'livepoll'],
-            ['vote', 'livepoll'],
-            ['loading', 'livepoll'],
+            ['control:closevoting', 'mod_livepoll'],
+            ['control:highlightanswer', 'mod_livepoll'],
+            ['control:votinghasclosed', 'mod_livepoll'],
+            ['mobile:pushtoVote', 'mod_livepoll'],
+            ['mobile:votes', 'mod_livepoll']
         ],
     ],
 ];

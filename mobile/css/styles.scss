@@ -1,0 +1,135 @@
+#livepoll{
+  $normal_bg_color: #d1ecf1;
+  $normal_border_color: #bee5eb;
+
+  $highlight_bg_color: #d4edda;
+  $highlight_border_color: #c3e6cb;
+
+  .flex-container {
+    display: flex;
+  }
+
+  .flex-container-col {
+    @extend .flex-container;
+    flex-direction: column;
+  }
+
+  #header{
+    flex-grow:8;
+
+    #intro {
+      width: 100%;
+      margin: 0;
+    }
+
+    #lecture-ctrls{
+      ion-item::part(native) {
+        padding-inline-start: 5px;
+      }
+
+      ion-item {
+        ion-label {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+
+  #voting-area-container {
+
+    ion-card {
+      transition: box-shadow 0.3s ease-in-out;
+
+      ion-card-content {
+        color: #0c5460;
+        background-color: $normal_bg_color;
+        border-color: $normal_border_color;
+        transition: box-shadow 0.3s ease-in-out;
+
+        .header {
+          justify-content: space-between;
+          flex-wrap: wrap;
+          border-bottom: solid 1px #95bf9e;
+          padding-bottom: 2px;
+        }
+      }
+
+      #push-info {
+        color: #787878;
+        font-size: 12px;
+        background-color: $normal_bg_color;
+      }
+    }
+
+    .isHighest {
+      box-shadow: 0.1rem 0.3rem 0.3rem #888;
+
+      ion-card-content {
+        color: #155724;
+        background-color: $highlight_bg_color;
+        border-color: $highlight_border_color;
+
+        #vote-count {
+          font-weight: bold;
+        }
+      }
+
+      #push-info {
+        background-color: $highlight_bg_color;
+      }
+
+    }
+
+    #message-container {
+      position: relative;
+      padding: 0.65rem 1.25rem;
+      padding-right: 1.25rem;
+      margin-bottom: 1rem;
+      border: 1px solid transparent;
+      border-top-color: transparent;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      border-left-color: transparent;
+      border-radius: 0.25rem;
+      color: #856404;
+      background-color: #fff3cd;
+      border-color: #efe2b8;
+      margin: 10px;
+      font-size: 14px;
+      transition: opacity .15s linear;
+    }
+
+    #push-info {
+      display: flex;
+      justify-content: center;
+    }
+
+    #vote-count {
+      font-size: 20px;
+    }
+
+    .isOwnVote {
+      border-left: 10px solid #ff9800;
+    }
+
+    @keyframes livepoll-answer {
+      from {
+        //opacity: 1;
+        transform: scale(0.9, 0.9);
+      }
+
+      to {
+        //opacity: .7;
+        transform: scale(1.05, 1.05);
+      }
+    }
+
+    .highlight {
+      animation-duration: 0.5s;
+      animation-name: livepoll-answer;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+  }
+}
