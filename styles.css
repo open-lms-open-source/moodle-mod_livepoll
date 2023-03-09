@@ -86,12 +86,12 @@ input:checked + .livepoll-slider:before {
 }
 
 /** Icon color for the activities. **/
-body:not(.theme-snap) li.activity.modtype_livepoll .activityiconcontainer,
-body:not(.theme-snap) .modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll {
+li.activity.modtype_livepoll .activityiconcontainer,
+.modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll {
     background-color: #c95151;
 }
 
-body:not(.theme-snap) li.activity.modtype_livepoll .activityiconcontainer img.activityicon,
-body:not(.theme-snap) .modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll img.activityicon {
+li.activity.modtype_livepoll .activityiconcontainer img.activityicon,
+.modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll img.activityicon {
     filter: brightness(0) invert(1);
 }
