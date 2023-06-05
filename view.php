@@ -40,7 +40,7 @@ if ($id) {
     $course         = $DB->get_record('course', array('id' => $moduleinstance->course), '*', MUST_EXIST);
     $cm             = get_coursemodule_from_instance('livepoll', $moduleinstance->id, $course->id, false, MUST_EXIST);
 } else {
-    print_error(get_string('missingidandcmid', mod_livepoll));
+    throw new \moodle_exception(get_string('missingidandcmid', mod_livepoll));
 }
 
 require_login($course, true, $cm);
