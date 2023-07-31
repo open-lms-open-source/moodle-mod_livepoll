@@ -26,6 +26,6 @@ defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'mod_livepoll';
 $plugin->release = '4.1.3';
-$plugin->version = 2023061500;
+$plugin->version = 2023073100;
 $plugin->requires = 2022112800;
 $plugin->maturity = MATURITY_STABLE;
