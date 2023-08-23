@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Moodle - https://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -12,7 +12,7 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
  * Backup steps for mod_livepoll are defined here.
@@ -20,17 +20,15 @@
  * @package     mod_livepoll
  * @category    backup
  * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
-defined('MOODLE_INTERNAL') || die();
 
 /**
  * Define the complete structure for backup, with file and id annotations.
  *
  * @package     mod_livepoll
  * @copyright   Copyright (c) 2018 Open LMS (https://www.openlms.net)
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class backup_livepoll_activity_structure_step extends backup_activity_structure_step {
 
@@ -44,8 +42,9 @@ class backup_livepoll_activity_structure_step extends backup_activity_structure_
 
         // Define each element separated.
         $livepoll = new backup_nested_element('livepoll', ['id'], [
-            'name', 'intro', 'introformat', 'timemodified',
-            'optiona', 'optionb', 'optionc', 'optiond', 'correctoption']);
+            'name', 'intro', 'introformat', 'timemodified', 'optiona',
+            'optionb', 'optionc', 'optiond', 'correctoption', 'resultrendering',
+        ]);
 
         // Build the tree.
         // Nothing here for Live Polls.
