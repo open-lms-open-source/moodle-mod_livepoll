@@ -38,11 +38,11 @@ class mod_livepoll_poll_handler_testcase extends advanced_testcase {
         // Performing a rendering strategy.
         $strategyies = [
             'text_only' => [
-                'text'
+                'text',
             ],
             'barchart_text' => [
                 'barchart',
-                'text'
+                'text',
             ],
         ];
         foreach ($strategyies as $strategyid => $elements) {
