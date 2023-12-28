@@ -36,7 +36,7 @@ class text_only_strategy implements rendering_strategy {
      */
     public function get_results_to_render() {
         return [
-            'text'
+            'text',
         ];
     }
 }
