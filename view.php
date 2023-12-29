@@ -49,7 +49,7 @@ $modulecontext = context_module::instance($cm->id);
 
 $event = \mod_livepoll\event\course_module_viewed::create(array(
     'objectid' => $moduleinstance->id,
-    'context' => $modulecontext
+    'context' => $modulecontext,
 ));
 $event->add_record_snapshot('course', $course);
 $event->add_record_snapshot('livepoll', $moduleinstance);
@@ -96,14 +96,14 @@ $elements = $strategy->get_results_to_render();
 foreach ($elements as $elem) {
     echo $OUTPUT->render_from_template('mod_livepoll/' . $elem . '_result',
         (object) [
-            'options' => $templateopts
+            'options' => $templateopts,
         ]);
 }
 
 if ($canvote) {
     echo $OUTPUT->render_from_template('mod_livepoll/voting_buttons',
         (object) [
-            'options' => $templateopts
+            'options' => $templateopts,
         ]);
 }
 
@@ -122,7 +122,7 @@ if ($cancontrol) {
 
     echo $OUTPUT->render_from_template('mod_livepoll/control_buttons',
         (object) [
-            'options' => $controlopts
+            'options' => $controlopts,
         ]);
 }
 

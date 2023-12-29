@@ -37,7 +37,7 @@ class piechart_text_strategy implements rendering_strategy {
     public function get_results_to_render() {
         return [
             'piechart',
-            'text'
+            'text',
         ];
     }
 }

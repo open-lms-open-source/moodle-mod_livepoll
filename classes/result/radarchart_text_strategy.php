@@ -37,7 +37,7 @@ class radarchart_text_strategy implements rendering_strategy {
     public function get_results_to_render() {
         return [
             'radarchart',
-            'text'
+            'text',
         ];
     }
 }

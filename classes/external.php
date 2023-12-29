@@ -39,7 +39,7 @@ class mod_livepoll_external extends external_api {
     public static function view_livepoll_parameters() {
         return new external_function_parameters(
             array(
-                'livepollid' => new external_value(PARAM_INT, 'Live poll instance id')
+                'livepollid' => new external_value(PARAM_INT, 'Live poll instance id'),
             )
         );
     }
@@ -54,7 +54,7 @@ class mod_livepoll_external extends external_api {
     public static function view_livepoll($livepollid) {
         global $DB;
         $params = array(
-            'livepollid' => $livepollid
+            'livepollid' => $livepollid,
         );
         $params = self::validate_parameters(self::view_livepoll_parameters(), $params);
         $warnings = array();
@@ -86,7 +86,7 @@ class mod_livepoll_external extends external_api {
         return new external_single_structure(
             array(
                 'status' => new external_value(PARAM_BOOL, 'Status: true if success'),
-                'warnings' => new external_warnings()
+                'warnings' => new external_warnings(),
             )
         );
     }

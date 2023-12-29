@@ -34,7 +34,7 @@ require_course_login($course);
 $coursecontext = context_course::instance($course->id);
 
 $event = \mod_livepoll\event\course_module_instance_list_viewed::create(array(
-    'context' => $modulecontext
+    'context' => $modulecontext,
 ));
 $event->add_record_snapshot('course', $course);
 $event->trigger();
@@ -81,7 +81,7 @@ foreach ($livepolls as $livepoll) {
             format_string($livepoll->name, true));
     }
 
-    if ($course->format == 'weeks' or $course->format == 'topics') {
+    if ($course->format == 'weeks' || $course->format == 'topics') {
         $table->data[] = array($livepoll->section, $link);
     } else {
         $table->data[] = array($link);
