@@ -1,0 +1,86 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template mod_livepoll/livepoll
+
+    The purpose of this template is to render the livepoll container for moodle app.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * isLecturer
+
+    Example context (json):
+    {
+        "isLecturer" : true
+    }
+}}
+
+{{=<% %>=}}
+<div id="livepoll">
+    <div id="header" class="flex-container">
+        <ion-card id="intro" *ngIf="this.AddonModLivePoll.intro.length > 0">
+            <core-format-text style="padding: 5px 10px 0 10px;" [collapsible-item]=30 [text]="this.AddonModLivePoll.intro" contextLevel="module"></core-format-text>
+        </ion-card>
+        <%#isLecturer%>
+            <div id="lecture-ctrls" class="flex-container-col">
+                <ion-item>
+                    <ion-toggle [ngModel]="this.AddonModLivePoll.optionCtrl.votingClosed" (ngModelChange)="this.AddonModLivePoll.toggleCloseVoting($event)" item-start style="padding-right: 5px"></ion-toggle>
+                    <ion-label> {{'plugin.mod_livepoll.control:closevoting' | translate }}</ion-label>
+                </ion-item>
+
+                <ion-item>
+                    <ion-toggle [ngModel]="this.AddonModLivePoll.optionCtrl.highlightVote" (ngModelChange)="this.AddonModLivePoll.toggleHighlight($event)" item-start style="padding-right: 5px"></ion-toggle>
+                    <ion-label>{{'plugin.mod_livepoll.control:highlightanswer' | translate }}</ion-label>
+                </ion-item>
+            </div>
+        <%/isLecturer%>
+    </div>
+    <div id="chart-container" *ngIf="this.AddonModLivePoll.optionCtrl?.chartCtrl">
+        <canvas id="livepoll-chart"></canvas>
+        <core-chart style="display: none;"></core-chart>
+    </div>
+    <div id="voting-area-container">
+        <div id="message-container" *ngIf="this.AddonModLivePoll.optionCtrl?.votingClosed">
+            {{'plugin.mod_livepoll.control:votinghasclosed' | translate }}.
+        </div>
+        <ng-container *ngFor="let optionItem of this.AddonModLivePoll.optionCtrl?.optionList | keyvalue">
+            <ion-card [ngClass]="{isHighest: optionItem.value.isHighest, isOwnVote: optionItem.value.isOwnVote, highlight: optionItem.value.highlight}">
+                <ion-card-content button (click)="this.AddonModLivePoll.doVote(optionItem.value)" >
+                    <div class="flex-container header">
+                        <div>
+                            {{optionItem.value.title}}
+                        </div>
+                        <div>
+                            {{'plugin.mod_livepoll.mobile:votes' | translate }}: <span id="vote-count">{{optionItem.value.voteCnt}}</span>
+                        </div>
+                    </div>
+                    <div class="content">
+                        {{optionItem.value.value}}
+                    </div>
+                </ion-card-content>
+                <div id="push-info">
+                    {{'plugin.mod_livepoll.mobile:pushtoVote' | translate }}
+                </div>
+            </ion-card>
+        </ng-container>
+    </div>
+</div>
