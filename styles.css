@@ -86,12 +86,7 @@ input:checked + .livepoll-slider:before {
 }
 
 /** Icon color for the activities. **/
-li.activity.modtype_livepoll .activityiconcontainer,
-.modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll {
-    background-color: #c95151;
-}
-
 li.activity.modtype_livepoll .activityiconcontainer img.activityicon,
 .modchoosercontainer div[data-internal="livepoll"] .modicon_livepoll img.activityicon {
-    filter: brightness(0) invert(1);
+    filter: invert(30%) sepia(60%) saturate(300%) hue-rotate(0deg) brightness(85%) contrast(95%)
 }
