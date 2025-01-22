@@ -16,7 +16,6 @@
 /**
  * Live poll Doughnut chart result for poll rendering.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2019 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */

@@ -16,7 +16,6 @@
 /**
  * Live poll shiny decorated text result for poll rendering.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -24,6 +23,7 @@ define(["jquery", "mod_livepoll/util", "mod_livepoll/decorated-text-result"],
     function($, util, DecoratedTextResult) {
         /**
          * Text result constructor.
+         * @param {function} decoratedResult
          * @returns {TextResult}
          * @constructor
          */
@@ -36,7 +36,8 @@ define(["jquery", "mod_livepoll/util", "mod_livepoll/decorated-text-result"],
         ShadowyTextResult.prototype = Object.create(DecoratedTextResult.prototype);
 
         /**
-         * {@inheritdoc}
+         * @param {array} options
+         * @param {array} votes
          */
         ShadowyTextResult.prototype.renderResult = function(options, votes) {
             var highest = util.getHighestVotedOptions(options, votes);

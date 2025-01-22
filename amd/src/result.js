@@ -16,7 +16,6 @@
 /**
  * Live dummy result handler. Not to be used but to be extended.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -35,8 +34,8 @@ define(["jquery", "core/log"],
         /**
          * Promises to update the UI for this result handler.
          * Do not override!
-         * @param options
-         * @param votes
+         * @param {array} options
+         * @param {array} votes
          */
         Result.prototype.update = function(options, votes) {
             var dfd = $.Deferred();
@@ -48,9 +47,9 @@ define(["jquery", "core/log"],
 
         /**
          * Updates the UI for this result handler and acknowledges using a callback.
-         * @param options
-         * @param votes
-         * @param callback
+         * @param {array} options
+         * @param {array} votes
+         * @param {function} callback
          */
         Result.prototype.performUpdate = function(options, votes, callback) {
             Log.debug("Results:");

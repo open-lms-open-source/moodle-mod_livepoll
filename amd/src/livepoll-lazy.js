@@ -16,7 +16,6 @@
 /**
  * Live poll main module.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -280,15 +279,15 @@ define(["jquery", "core/log", "core/templates"],
         /**
          * Module initialization function.
          *
-         * @param apiKey
-         * @param authDomain
-         * @param databaseURL
-         * @param projectID
-         * @param pollKey
-         * @param userKey
-         * @param options
-         * @param correctOption
-         * @param resultsToRender
+         * @param {string} apiKey
+         * @param {string} authDomain
+         * @param {string} databaseURL
+         * @param {string} projectID
+         * @param {string} pollKey
+         * @param {string} userKey
+         * @param {array} options
+         * @param {string} correctOption
+         * @param {array} resultsToRender
          */
         var init = function(apiKey, authDomain, databaseURL, projectID, pollKey, userKey, options, correctOption, resultsToRender) {
             self.apiKey = apiKey;

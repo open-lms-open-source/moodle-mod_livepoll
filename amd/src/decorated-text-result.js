@@ -16,7 +16,6 @@
 /**
  * Live poll text result for poll rendering.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -39,8 +38,8 @@ define(["jquery", "mod_livepoll/text-result-lazy"],
 
         /**
          * Renders the text result.
-         * @param options
-         * @param votes
+         * @param {array} options
+         * @param {array} votes
          */
         DecoratedTextResult.prototype.renderResult = function(options, votes) {
             this._decoratedResult.renderResult(options, votes);

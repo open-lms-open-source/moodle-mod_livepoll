@@ -16,7 +16,6 @@
 /**
  * Live poll barchart result for poll rendering.
  *
- * @package mod_livepoll
  * @copyright Copyright (c) 2018 Open LMS
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -49,7 +48,7 @@ define(["jquery", "core/log", "mod_livepoll/result", "core/chartjs-lazy"],
 
         /**
          * Initializes the Char.JS element.
-         * @param options
+         * @param {array} options
          */
         BarChartResult.prototype.initChart = function(options) {
             var ctx = document.getElementById("livepoll-chart").getContext("2d");
@@ -82,7 +81,9 @@ define(["jquery", "core/log", "mod_livepoll/result", "core/chartjs-lazy"],
         };
 
         /**
-         * {@inheritdoc}
+         * @param {array} options
+         * @param {array} votes
+         * @param {function} callback
          */
         BarChartResult.prototype.performUpdate = function(options, votes, callback) {
             var self = this;
