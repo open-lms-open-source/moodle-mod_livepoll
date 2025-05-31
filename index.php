@@ -55,7 +55,7 @@ if (empty($livepolls)) {
     notice(get_string('nonewmodules', 'mod_livepoll'), new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
-$table = new html_table();
+$table = new \core_table\output\html_table();
 $table->attributes['class'] = 'generaltable mod_index';
 
 if ($course->format == 'weeks') {
@@ -71,12 +71,12 @@ if ($course->format == 'weeks') {
 
 foreach ($livepolls as $livepoll) {
     if (!$livepoll->visible) {
-        $link = html_writer::link(
+        $link = \core\output\html_writer::link(
             new moodle_url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
             format_string($livepoll->name, true),
             array('class' => 'dimmed'));
     } else {
-        $link = html_writer::link(
+        $link = \core\output\html_writer::link(
             new moodle_url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
             format_string($livepoll->name, true));
     }
@@ -88,5 +88,5 @@ foreach ($livepolls as $livepoll) {
     }
 }
 
-echo html_writer::table($table);
+echo \core\output\html_writer::table($table);
 echo $OUTPUT->footer();
