@@ -54,7 +54,7 @@ class mod_livepoll_external extends external_api {
      *
      * @param int $livepollid The choice group id.
      * @return array of warnings and status result
-     * @throws moodle_exception
+     * @throws \core\exception\moodle_exception
      */
     public static function view_livepoll($livepollid) {
         global $DB;
