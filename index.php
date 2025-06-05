@@ -52,7 +52,7 @@ echo $OUTPUT->heading($modulenameplural);
 $livepolls = get_all_instances_in_course('livepoll', $course);
 
 if (empty($livepolls)) {
-    notice(get_string('nonewmodules', 'mod_livepoll'), new moodle_url('/course/view.php', array('id' => $course->id)));
+    notice(get_string('nonewmodules', 'mod_livepoll'), new \core\url('/course/view.php', array('id' => $course->id)));
 }
 
 $table = new \core_table\output\html_table();
@@ -72,12 +72,12 @@ if ($course->format == 'weeks') {
 foreach ($livepolls as $livepoll) {
     if (!$livepoll->visible) {
         $link = \core\output\html_writer::link(
-            new moodle_url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
+            new \core\url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
             format_string($livepoll->name, true),
             array('class' => 'dimmed'));
     } else {
         $link = \core\output\html_writer::link(
-            new moodle_url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
+            new \core\url('/mod/livepoll/view.php', array('id' => $livepoll->coursemodule)),
             format_string($livepoll->name, true));
     }
 
