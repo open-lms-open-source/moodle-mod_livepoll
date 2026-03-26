@@ -22,6 +22,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+namespace mod_livepoll;
+
 use core_privacy\local\metadata\collection;
 use mod_livepoll\privacy\provider;
 
@@ -34,7 +37,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  Copyright (c) 2019 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mod_livepoll_privacy_provider_testcase extends \core_privacy\tests\provider_testcase {
+class privacy_provider_test extends \core_privacy\tests\provider_testcase {
 
     /**
      * Test for provider::get_metadata().

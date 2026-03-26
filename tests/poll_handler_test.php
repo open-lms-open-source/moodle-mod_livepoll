@@ -23,6 +23,9 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+namespace mod_livepoll;
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -32,7 +35,7 @@ defined('MOODLE_INTERNAL') || die();
  * @copyright  Copyright (c) 2018 Open LMS (https://www.openlms.net)
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class mod_livepoll_poll_handler_testcase extends advanced_testcase {
+class poll_handler_test extends \advanced_testcase {
     public function test_strategy() {
         $this->resetAfterTest(true);
         // Performing a rendering strategy.
