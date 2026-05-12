@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
  * Return if the plugin supports $feature.
  *
  * @param string $feature Constant representing the feature.
- * @return true | null True if the feature is supported, null otherwise.
+ * @return bool|string|null True or String if the feature is supported, null otherwise.
  */
 function livepoll_supports($feature) {
     switch ($feature) {
@@ -36,6 +36,8 @@ function livepoll_supports($feature) {
             return true;
         case FEATURE_BACKUP_MOODLE2:
             return true;
+        case FEATURE_MOD_PURPOSE:
+            return MOD_PURPOSE_INTERACTIVECONTENT;
         default:
             return null;
     }
