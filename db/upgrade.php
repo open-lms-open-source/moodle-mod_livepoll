@@ -97,5 +97,18 @@ function xmldb_livepoll_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2018071304, 'livepoll');
     }
 
+    if ($oldversion < 2026091501) {
+
+        // Changing precision of field name on table livepoll to (1333).
+        $table = new xmldb_table('livepoll');
+        $field = new xmldb_field('name', XMLDB_TYPE_CHAR, '1333', null, XMLDB_NOTNULL, null, null, 'course');
+
+        // Launch change of precision for field name.
+        $dbman->change_field_precision($table, $field);
+
+        // Live poll savepoint reached.
+        upgrade_mod_savepoint(true, 2026091501, 'livepoll');
+    }
+
     return true;
 }

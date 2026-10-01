@@ -56,7 +56,7 @@ class mod_livepoll_mod_form extends moodleform_mod {
         }
 
         $mform->addRule('name', null, 'required', null, 'client');
-        $mform->addRule('name', get_string('maximumchars', '', 255), 'maxlength', 255, 'client');
+        $mform->addRule('name', get_string('maximumchars', '', 1333), 'maxlength', 1333, 'client');
         $mform->addHelpButton('name', 'livepollname', 'mod_livepoll');
 
         // Adding the standard "intro" and "introformat" fields.
